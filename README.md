@@ -1,2 +1,2 @@
-# circular_bar_chart
+# Circular Bar Chart
 Visualizing Absolute and Relative Data in the same chart.
