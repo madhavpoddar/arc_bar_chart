@@ -7,7 +7,7 @@ from bokeh.plotting import figure
 
 
 def circular_bar_chart(df, countries, countries_superset, colors):
-
+    pass
     df_t = df[df["date"] == df["date"].max()]
     max_radius = df_t[df_t["location"].isin(countries_superset)]["population"].max()
     p = figure(
@@ -21,7 +21,7 @@ def circular_bar_chart(df, countries, countries_superset, colors):
     )
 
     glyphs = {}
-    for i in range(len(countries_superset)):
+    for i, _ in enumerate(countries_superset):
         source = ColumnDataSource(df_t[df_t["location"] == countries_superset[i]])
         glyphs[countries_superset[i]] = p.arc(
             x=0,
@@ -35,7 +35,7 @@ def circular_bar_chart(df, countries, countries_superset, colors):
             # legend_label=countries[i],
         )
         glyphs[countries_superset[i]].visible = countries_superset[i] in countries
-    
+
     legend_items = [LegendItem(label=country, renderers=[glyphs[country]]) for country in countries]
     p.add_layout(Legend(items=legend_items))
 
